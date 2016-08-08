@@ -1,0 +1,35 @@
+.timers {
+  display: inline-block;
+  height: 100px;
+  width: 100px;
+  background-color: white;
+  text-align: center;
+}
+
+#sessionTime{
+  position: absolute;
+  left: 30%;
+  top: 49%;
+}
+
+#timer{
+  position: absolute;
+  left: 50%;
+  top: 48%;
+}
+
+#breakTime{
+  position: absolute;
+  left: 75%;
+  top: 49%;
+}
+
+#buttons{
+  position: absolute;
+  left: 48%;
+  top: 60%;
+}
+
+body {
+  margin: 0 auto;
+}
