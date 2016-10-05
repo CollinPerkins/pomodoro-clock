@@ -6,6 +6,10 @@
   text-align: center;
 }
 
+.borderBox {
+  border: solid blue 2px;
+}
+
 #sessionTime{
   position: absolute;
   left: 30%;

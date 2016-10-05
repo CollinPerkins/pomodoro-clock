@@ -7,8 +7,8 @@ $(document).ready(function (){
   var startToggle = false;
   var sessionToggle = true;
   var start;
-  var breakTime = 300;
-  var sessionTime = 1500;
+  var breakTime = 60 * 5;
+  var sessionTime = 60 * 25;
   var selected = true;
 
   // Sets the Session Time countDown
@@ -27,24 +27,29 @@ $(document).ready(function (){
     console.log(this.id);
     if(this.id === 'sessionTime'){
       selected = true;
+      $('#sessionTime').addClass('borderBox');
+      $('#breakTime').removeClass('borderBox');
     } else {
       selected = false;
+      $('#sessionTime').removeClass('borderBox');
+      $('#breakTime').addClass('borderBox');
     }
   });
 
   $('#minus').click(function () {
-    if(sessionTime > 60 && breakTime > 60){
-      if(selected){
+    if(selected){
+      if(sessionTime > 59){
         sessionTime -= 60;
-        sessionTimeUpdate();
-        timerUpdate();
-      } else {
-        breakTime -= 60;
-        breakTimeUpdate();
-        timerUpdate();
       }
+      sessionTimeUpdate();
+      timerUpdate();
+    } else {
+      if(breakTime > 59){
+        breakTime -= 60;
+      }
+      breakTimeUpdate();
+      timerUpdate();
     }
-
     sessionTimer = new timer(sessionTime - 1);
     breakTimer = new timer(breakTime - 1);
   });
@@ -65,6 +70,8 @@ $(document).ready(function (){
 
   $('#start').click(function () {
     startPause(sessionToggle);
+    $('#sessionTime').removeClass('borderBox');
+    $('#breakTime').removeClass('borderBox');
   });
 
   function timerUpdate(){
